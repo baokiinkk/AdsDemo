@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "618283123570",
+    "project_id": "adsdemo-92061",
+    "storage_bucket": "adsdemo-92061.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:618283123570:android:93c4ec0a21d264c55853eb",
+        "android_client_info": {
+          "package_name": "com.baokiiin.myapplication"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "618283123570-rtmab5n42bgnq747ntrdcf5nrc9du8au.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.baokiiin.myapplication",
+            "certificate_hash": "7ba6af7875bb415f8abc29cfcc41ff0e21fcb807"
+          }
+        },
+        {
+          "client_id": "618283123570-purconj304ojpnnjpqu8a5j5lcebvth2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD5h49zfSgSSLmdyEMaNCwe2_AcZZgSOgg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "618283123570-purconj304ojpnnjpqu8a5j5lcebvth2.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
