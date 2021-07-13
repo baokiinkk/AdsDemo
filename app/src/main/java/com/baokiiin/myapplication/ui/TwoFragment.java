@@ -8,15 +8,19 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 import com.baokiiin.myapplication.R;
 import com.baokiiin.myapplication.adapter.ItemTwoAdapter;
 import com.baokiiin.myapplication.manager.AdsManager;
 import com.baokiiin.myapplication.model.Item;
+import com.baokiiin.myapplication.utils.Utils;
 
 import java.util.ArrayList;
 import java.util.Random;
 
+import static com.baokiiin.myapplication.utils.Utils.ONEFRAGMENT;
+import static com.baokiiin.myapplication.utils.Utils.TWOFRAGMENT;
 import static com.baokiiin.myapplication.utils.Utils.randItem;
 
 public class TwoFragment extends Fragment {
@@ -34,6 +38,7 @@ public class TwoFragment extends Fragment {
     ItemTwoAdapter itemAdapter;
     RecyclerView recyclerView;
     GridLayoutManager manager;
+    Button showDialog;
 
 
     //---------------------------------------- onCreate --------------------------------------------
@@ -45,6 +50,7 @@ public class TwoFragment extends Fragment {
         unitView(view);
         setUpRecycleView();
         loadData();
+        clickView();
         return view;
     }
 
@@ -53,6 +59,7 @@ public class TwoFragment extends Fragment {
     void unitView(View view) {
         ArrayList<Integer> temp = randItem(10);
         recyclerView = view.findViewById(R.id.rv_two_fragment);
+        showDialog = view.findViewById(R.id.dialog_button);
         itemAdapter = new ItemTwoAdapter(adsManager, temp);
         manager = new GridLayoutManager(getContext(), 2);
 
@@ -79,5 +86,10 @@ public class TwoFragment extends Fragment {
             items.add(new Item("Quocbao Two " + i, i * 100));
         items.add(new Item("",0));
         itemAdapter.submitList(items);
+    }
+    void clickView(){
+        showDialog.setOnClickListener(v -> {
+            Utils.showDialog(requireActivity(),"TWO_FRAGMENT",TWOFRAGMENT);
+        });
     }
 }
