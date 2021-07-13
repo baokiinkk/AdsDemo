@@ -2,7 +2,6 @@ package com.baokiiin.myapplication.adapter;
 
 
 import android.annotation.SuppressLint;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,25 +14,21 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.baokiiin.myapplication.R;
 import com.baokiiin.myapplication.manager.AdsManager;
-import com.baokiiin.myapplication.manager.AdsManagerCallback;
 import com.baokiiin.myapplication.model.Item;
-import com.google.android.ads.nativetemplates.NativeTemplateStyle;
 import com.google.android.ads.nativetemplates.TemplateView;
-import com.google.android.gms.ads.AdRequest;
-import com.google.android.gms.ads.nativead.NativeAd;
 
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
-import java.util.Random;
+
+import static com.baokiiin.myapplication.utils.Utils.ADS_ITEM;
+import static com.baokiiin.myapplication.utils.Utils.HEADER_ITEM;
+import static com.baokiiin.myapplication.utils.Utils.ITEM;
 
 public class ItemAdapter extends
         ListAdapter<Item, ViewHolder> {
     public ArrayList<Integer> randItem;
     AdsManager adsManager;
-    static final int ADS_ITEM = 1;
-    static final int ITEM = 0;
-    static final int HEADER_ITEM = 100;
     public ItemAdapter(AdsManager adsManager) {
         super(new ItemDIff());
         this.adsManager = adsManager;
@@ -95,9 +90,9 @@ class ViewHolder extends
 
     static ViewHolder from(ViewGroup parent,int type) {
         View view;
-        if(type == 0)
+        if(type == ITEM)
             view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item, parent, false);
-        else if(type == 1)
+        else if(type == ADS_ITEM)
             view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_ads, parent, false);
         else
             view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_ads_header, parent, false);
@@ -107,7 +102,7 @@ class ViewHolder extends
     }
 
     void bind(Item item,int type,AdsManager adsManager) {
-        if(type == 0){
+        if(type == ITEM){
             TextView name = itemView.findViewById(R.id.txtName);
             TextView price = itemView.findViewById(R.id.txtPrice);
             name.setText(item.getName());

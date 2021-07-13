@@ -13,9 +13,9 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 
-import static com.baokiiin.myapplication.adapter.ItemAdapter.ADS_ITEM;
-import static com.baokiiin.myapplication.adapter.ItemAdapter.HEADER_ITEM;
-import static com.baokiiin.myapplication.adapter.ItemAdapter.ITEM;
+import static com.baokiiin.myapplication.utils.Utils.ADS_ITEM;
+import static com.baokiiin.myapplication.utils.Utils.HEADER_ITEM;
+import static com.baokiiin.myapplication.utils.Utils.ITEM;
 
 
 public class ItemTwoAdapter extends

@@ -17,6 +17,8 @@ import com.baokiiin.myapplication.model.Item;
 import java.util.ArrayList;
 import java.util.Random;
 
+import static com.baokiiin.myapplication.utils.Utils.randItem;
+
 public class TwoFragment extends Fragment {
 
     public TwoFragment(AdsManager adsManager) {
@@ -48,26 +50,8 @@ public class TwoFragment extends Fragment {
 
 
     //---------------------------------------- func --------------------------------------------
-    ArrayList<Integer> randItem() {
-        ArrayList<Integer> temp = new ArrayList<>();
-        temp.add(-2);
-        int indexTemp = 1;
-        do {
-            Random rand = new Random();
-            int posRand = rand.nextInt(10) + 1;
-            if (posRand % 3 ==0 && Math.abs(posRand*2 - temp.get(indexTemp-1))>1) {
-                temp.add(posRand*2);
-                indexTemp++;
-            }
-
-        } while (temp.size() <= 2);
-        temp.sort(Integer::compareTo);
-        temp.set(2,temp.get(2)+1);
-        return temp;
-    }
-
     void unitView(View view) {
-        ArrayList<Integer> temp = randItem();
+        ArrayList<Integer> temp = randItem(10);
         recyclerView = view.findViewById(R.id.rv_two_fragment);
         itemAdapter = new ItemTwoAdapter(adsManager, temp);
         manager = new GridLayoutManager(getContext(), 2);

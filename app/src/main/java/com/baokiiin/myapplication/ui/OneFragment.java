@@ -18,6 +18,8 @@ import com.baokiiin.myapplication.model.Item;
 import java.util.ArrayList;
 import java.util.Random;
 
+import static com.baokiiin.myapplication.utils.Utils.randItem;
+
 
 public class OneFragment extends Fragment {
 
@@ -58,22 +60,6 @@ public class OneFragment extends Fragment {
         recyclerView = view.findViewById(R.id.rv_one_fragment);
         itemAdapter = new ItemAdapter(adsManager);
     }
-    ArrayList<Integer> randItem(){
-        ArrayList<Integer> temp = new ArrayList<>();
-        temp.add(-1);
-        int indexTemp = 1;
-        for(int i=0;i<20;i++){
-            Random rand = new Random();
-            int posRand = rand.nextInt(20-i)+1;
-            if(Math.abs(posRand - temp.get(indexTemp-1))>1) {
-                temp.add(posRand);
-                indexTemp++;
-            }
-            if(temp.size()>2) break;
-        }
-        temp.sort(Integer::compareTo);
-        return temp;
-    }
     void setUpRecycleView(){
         recyclerView.setAdapter(itemAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
@@ -82,7 +68,7 @@ public class OneFragment extends Fragment {
         ArrayList<Item> items = new ArrayList<>();
         for(int i=0;i<20;i++)
             items.add(new Item("Quocbao "+i,i*100));
-        itemAdapter.randItem = randItem();
+        itemAdapter.randItem = randItem(10);
         itemAdapter.submitList(items);
     }
 
