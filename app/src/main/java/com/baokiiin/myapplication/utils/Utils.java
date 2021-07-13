@@ -1,9 +1,14 @@
 package com.baokiiin.myapplication.utils;
 
+import android.content.Context;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.PopupMenu;
+import android.widget.TextView;
 
 import androidx.fragment.app.FragmentActivity;
 
+import com.baokiiin.myapplication.R;
 import com.baokiiin.myapplication.ui.CustomDiaLogFragment;
 
 import java.util.ArrayList;
@@ -41,5 +46,16 @@ public class Utils {
         CustomDiaLogFragment diaLogFragment = new CustomDiaLogFragment();
         diaLogFragment.setArguments(bundle);
         diaLogFragment.show(fragmentActivity.getSupportFragmentManager(),"custom");
+    }
+
+    public static void showPopupWindow(Context context, View view){
+        PopupMenu popup = new PopupMenu(context, view);
+        popup.getMenuInflater()
+                .inflate(R.menu.popup_menu, popup.getMenu());
+        popup.setOnMenuItemClickListener(item -> {
+            ((TextView)view).setText(item.getTitle());
+            return true;
+        });
+        popup.show();
     }
 }
