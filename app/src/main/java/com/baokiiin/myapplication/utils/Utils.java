@@ -1,5 +1,11 @@
 package com.baokiiin.myapplication.utils;
 
+import android.os.Bundle;
+
+import androidx.fragment.app.FragmentActivity;
+
+import com.baokiiin.myapplication.ui.CustomDiaLogFragment;
+
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -7,6 +13,10 @@ public class Utils {
     public static final int ADS_ITEM = 1;
     public static final int ITEM = 0;
     public static final int HEADER_ITEM = 100;
+    public static final String TITLE = "title";
+    public static final String TYPE = "type";
+    public static final int ONEFRAGMENT = 0;
+    public static final int TWOFRAGMENT = 1;
 
     public static ArrayList<Integer> randItem(int max){
         ArrayList<Integer> temp = new ArrayList<>();
@@ -23,5 +33,13 @@ public class Utils {
         temp.sort(Integer::compareTo);
         temp.set(2,temp.get(2)+1);
         return temp;
+    }
+    public static void showDialog(FragmentActivity fragmentActivity,String title,int type){
+        Bundle bundle = new Bundle();
+        bundle.putString(TITLE,title);
+        bundle.putInt(TYPE,type);
+        CustomDiaLogFragment diaLogFragment = new CustomDiaLogFragment();
+        diaLogFragment.setArguments(bundle);
+        diaLogFragment.show(fragmentActivity.getSupportFragmentManager(),"custom");
     }
 }

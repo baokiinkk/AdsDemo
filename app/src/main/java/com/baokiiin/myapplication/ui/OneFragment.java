@@ -6,18 +6,22 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 import com.baokiiin.myapplication.R;
 import com.baokiiin.myapplication.adapter.ItemAdapter;
 import com.baokiiin.myapplication.manager.AdsManager;
 import com.baokiiin.myapplication.model.Item;
+import com.baokiiin.myapplication.utils.Utils;
 
 import java.util.ArrayList;
 import java.util.Random;
 
+import static com.baokiiin.myapplication.utils.Utils.ONEFRAGMENT;
 import static com.baokiiin.myapplication.utils.Utils.randItem;
 
 
@@ -36,6 +40,7 @@ public class OneFragment extends Fragment {
     ItemAdapter itemAdapter;
     RecyclerView recyclerView;
     AdsManager adsManager;
+    Button showDialog;
 
     //---------------------------------------- onCreate --------------------------------------------
     @Override
@@ -45,7 +50,7 @@ public class OneFragment extends Fragment {
         unitView(view);
         setUpRecycleView();
         loadData();
-
+        clickView();
         return view;
     }
 
@@ -59,6 +64,7 @@ public class OneFragment extends Fragment {
     void unitView(View view){
         recyclerView = view.findViewById(R.id.rv_one_fragment);
         itemAdapter = new ItemAdapter(adsManager);
+        showDialog = view.findViewById(R.id.dialog_button);
     }
     void setUpRecycleView(){
         recyclerView.setAdapter(itemAdapter);
@@ -70,6 +76,11 @@ public class OneFragment extends Fragment {
             items.add(new Item("Quocbao "+i,i*100));
         itemAdapter.randItem = randItem(10);
         itemAdapter.submitList(items);
+    }
+    void clickView(){
+        showDialog.setOnClickListener(v -> {
+            Utils.showDialog(requireActivity(),"ONE_FRAGMENT",ONEFRAGMENT);
+        });
     }
 
 }
