@@ -6,11 +6,14 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.DialogFragment;
+
 import com.baokiiin.myapplication.R;
+
 import static com.baokiiin.myapplication.utils.Utils.TITLE;
 import static com.baokiiin.myapplication.utils.Utils.TYPE;
 import static com.baokiiin.myapplication.utils.Utils.showPopupWindow;
@@ -52,7 +55,10 @@ public class CustomDiaLogFragment extends DialogFragment {
 
     private void clickView() {
         btnCancel.setOnClickListener(v -> dismiss());
-        btnOK.setOnClickListener(v -> dismiss());
+        btnOK.setOnClickListener(v -> {
+            dismiss();
+            Toast.makeText(getContext(), txtClick.getText().toString(), Toast.LENGTH_SHORT).show();
+        });
         txtClick.setOnClickListener(v -> showPopupWindow(getContext(), v));
     }
 }

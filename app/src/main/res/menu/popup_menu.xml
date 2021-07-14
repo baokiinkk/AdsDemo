@@ -11,6 +11,14 @@
 
     <item
         android:id="@+id/three"
-        android:title="Three"/>
+        android:title="Three"
+        >
+        <menu>
+            <item
+                android:id="@+id/share"
+                android:icon="@android:drawable/ic_menu_share"
+                android:title="Share"/>
+        </menu>
+    </item>
 
 </menu>

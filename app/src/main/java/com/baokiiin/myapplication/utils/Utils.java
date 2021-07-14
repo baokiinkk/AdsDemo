@@ -20,6 +20,7 @@ public class Utils {
     public static final int HEADER_ITEM = 100;
     public static final String TITLE = "title";
     public static final String TYPE = "type";
+    private static final String TAG= "custom";
 
 
     public static ArrayList<Integer> randItem(int max) {
@@ -50,7 +51,7 @@ public class Utils {
         bundle.putBoolean(TYPE, typeDialog);
         CustomDiaLogFragment diaLogFragment = new CustomDiaLogFragment();
         diaLogFragment.setArguments(bundle);
-        diaLogFragment.show(fragmentActivity.getSupportFragmentManager(), "custom");
+        diaLogFragment.show(fragmentActivity.getSupportFragmentManager(), TAG);
     }
 
     public static void showPopupWindow(Context context, View view){
