@@ -1,6 +1,7 @@
 package com.baokiiin.myapplication.ui;
 
 import android.os.Bundle;
+
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -17,10 +18,7 @@ import com.baokiiin.myapplication.model.Item;
 import com.baokiiin.myapplication.utils.Utils;
 
 import java.util.ArrayList;
-import java.util.Random;
 
-import static com.baokiiin.myapplication.utils.Utils.ONEFRAGMENT;
-import static com.baokiiin.myapplication.utils.Utils.TWOFRAGMENT;
 import static com.baokiiin.myapplication.utils.Utils.randItem;
 
 public class TwoFragment extends Fragment {
@@ -84,12 +82,11 @@ public class TwoFragment extends Fragment {
         ArrayList<Item> items = new ArrayList<>();
         for (int i = 0; i < 20; i++)
             items.add(new Item("Quocbao Two " + i, i * 100));
-        items.add(new Item("",0));
+        items.add(new Item("", 0));
         itemAdapter.submitList(items);
     }
-    void clickView(){
-        showDialog.setOnClickListener(v -> {
-            Utils.showDialog(requireActivity(),"TWO_FRAGMENT",TWOFRAGMENT);
-        });
+
+    void clickView() {
+        showDialog.setOnClickListener(v -> Utils.showDialog(requireActivity(), "TWO_FRAGMENT", true));
     }
 }

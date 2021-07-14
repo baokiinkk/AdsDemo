@@ -1,24 +1,17 @@
 package com.baokiiin.myapplication.ui;
 
-import android.app.Dialog;
-import android.icu.text.CaseMap;
 import android.os.Bundle;
 import android.view.LayoutInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.PopupMenu;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.DialogFragment;
-
 import com.baokiiin.myapplication.R;
-
 import static com.baokiiin.myapplication.utils.Utils.TITLE;
-import static com.baokiiin.myapplication.utils.Utils.TWOFRAGMENT;
 import static com.baokiiin.myapplication.utils.Utils.TYPE;
 import static com.baokiiin.myapplication.utils.Utils.showPopupWindow;
 
@@ -30,7 +23,7 @@ public class CustomDiaLogFragment extends DialogFragment {
     TextView txtTitle;
     TextView txtClick;
     String title;
-    int type;
+    Boolean type;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable @org.jetbrains.annotations.Nullable ViewGroup container, @Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
@@ -50,23 +43,16 @@ public class CustomDiaLogFragment extends DialogFragment {
     }
 
     private void create() {
-        title = getArguments().getString(TITLE, "");
-        type = getArguments().getInt(TYPE, -1);
+        title = getArguments() != null ? getArguments().getString(TITLE, "") : null;
+        type = getArguments().getBoolean(TYPE, false);
         txtTitle.setText(title);
-        if (type == TWOFRAGMENT)
+        if (!type)
             btnCancel.setVisibility(View.GONE);
     }
 
     private void clickView() {
-        btnCancel.setOnClickListener(v -> {
-            dismiss();
-        });
-        btnOK.setOnClickListener(v -> {
-            dismiss();
-        });
-
-        txtClick.setOnClickListener(v -> {
-            showPopupWindow(getContext(),v);
-        });
+        btnCancel.setOnClickListener(v -> dismiss());
+        btnOK.setOnClickListener(v -> dismiss());
+        txtClick.setOnClickListener(v -> showPopupWindow(getContext(), v));
     }
 }

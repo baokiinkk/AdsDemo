@@ -6,7 +6,6 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,9 +18,7 @@ import com.baokiiin.myapplication.model.Item;
 import com.baokiiin.myapplication.utils.Utils;
 
 import java.util.ArrayList;
-import java.util.Random;
 
-import static com.baokiiin.myapplication.utils.Utils.ONEFRAGMENT;
 import static com.baokiiin.myapplication.utils.Utils.randItem;
 
 
@@ -46,7 +43,7 @@ public class OneFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view =  inflater.inflate(R.layout.fragment_one, container, false);
+        View view = inflater.inflate(R.layout.fragment_one, container, false);
         unitView(view);
         setUpRecycleView();
         loadData();
@@ -61,26 +58,27 @@ public class OneFragment extends Fragment {
     }
 
     //---------------------------------------- func --------------------------------------------
-    void unitView(View view){
+    void unitView(View view) {
         recyclerView = view.findViewById(R.id.rv_one_fragment);
         itemAdapter = new ItemAdapter(adsManager);
         showDialog = view.findViewById(R.id.dialog_button);
     }
-    void setUpRecycleView(){
+
+    void setUpRecycleView() {
         recyclerView.setAdapter(itemAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
     }
-    void loadData(){
+
+    void loadData() {
         ArrayList<Item> items = new ArrayList<>();
-        for(int i=0;i<20;i++)
-            items.add(new Item("Quocbao "+i,i*100));
+        for (int i = 0; i < 20; i++)
+            items.add(new Item("Quocbao " + i, i * 100));
         itemAdapter.randItem = randItem(10);
         itemAdapter.submitList(items);
     }
-    void clickView(){
-        showDialog.setOnClickListener(v -> {
-            Utils.showDialog(requireActivity(),"ONE_FRAGMENT",ONEFRAGMENT);
-        });
+
+    void clickView() {
+        showDialog.setOnClickListener(v -> Utils.showDialog(requireActivity(), "ONE_FRAGMENT"));
     }
 
 }
