@@ -19,9 +19,6 @@ import com.baokiiin.myapplication.model.Item;
 import com.baokiiin.myapplication.utils.Utils;
 
 import java.util.ArrayList;
-import java.util.Random;
-
-import static com.baokiiin.myapplication.utils.Utils.ONEFRAGMENT;
 import static com.baokiiin.myapplication.utils.Utils.randItem;
 
 
@@ -79,7 +76,7 @@ public class OneFragment extends Fragment {
     }
     void clickView(){
         showDialog.setOnClickListener(v -> {
-            Utils.showDialog(requireActivity(),"ONE_FRAGMENT",ONEFRAGMENT);
+            Utils.showDialog(requireActivity(),"ONE_FRAGMENT");
         });
     }
 
