@@ -89,7 +89,7 @@ public class TwoFragment extends Fragment {
     }
     void clickView(){
         showDialog.setOnClickListener(v -> {
-            Utils.showDialog(requireActivity(),"TWO_FRAGMENT",TWOFRAGMENT);
+            Utils.showDialog(requireActivity(),"TWO_FRAGMENT",true);
         });
     }
 }

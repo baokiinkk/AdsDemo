@@ -18,28 +18,35 @@ public class Utils {
     public static final int ONEFRAGMENT = 0;
     public static final int TWOFRAGMENT = 1;
 
-    public static ArrayList<Integer> randItem(int max){
+    public static ArrayList<Integer> randItem(int max) {
         ArrayList<Integer> temp = new ArrayList<>();
         temp.add(-1);
         int indexTemp = 1;
-        do{
+        do {
             Random rand = new Random();
-            int posRand = rand.nextInt(max)+1;
-            if (posRand % 3 ==0 && Math.abs(posRand*2 - temp.get(indexTemp-1))>1) {
-                temp.add(posRand*2);
+            int posRand = rand.nextInt(max) + 1;
+            if (posRand % 3 == 0 && Math.abs(posRand * 2 - temp.get(indexTemp - 1)) > 1) {
+                temp.add(posRand * 2);
                 indexTemp++;
             }
-        }while (temp.size()<=2);
+        } while (temp.size() <= 2);
         temp.sort(Integer::compareTo);
-        temp.set(2,temp.get(2)+1);
+        temp.set(2, temp.get(2) + 1);
         return temp;
     }
-    public static void showDialog(FragmentActivity fragmentActivity,String title,int type){
+
+    public static void showDialog(FragmentActivity fragmentActivity, String title, Boolean... isCancel) {
+
+        boolean typeDialog = false;
+        if (isCancel.length >0)
+            typeDialog = isCancel[isCancel.length-1];
+
         Bundle bundle = new Bundle();
-        bundle.putString(TITLE,title);
-        bundle.putInt(TYPE,type);
+        bundle.putString(TITLE, title);
+        bundle.putBoolean(TYPE, typeDialog);
         CustomDiaLogFragment diaLogFragment = new CustomDiaLogFragment();
         diaLogFragment.setArguments(bundle);
-        diaLogFragment.show(fragmentActivity.getSupportFragmentManager(),"custom");
+        diaLogFragment.show(fragmentActivity.getSupportFragmentManager(), "custom");
     }
+
 }

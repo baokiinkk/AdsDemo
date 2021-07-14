@@ -27,7 +27,7 @@ public class CustomDiaLogFragment extends DialogFragment {
     TextView txtTitle;
     TextView txtClick;
     String title;
-    int type;
+    Boolean type;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable @org.jetbrains.annotations.Nullable ViewGroup container, @Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
@@ -46,9 +46,9 @@ public class CustomDiaLogFragment extends DialogFragment {
     }
     private void create(){
         title = getArguments().getString(TITLE,"");
-        type = getArguments().getInt(TYPE,-1);
+        type = getArguments().getBoolean(TYPE,false);
         txtTitle.setText(title);
-        if(type == TWOFRAGMENT)
+        if(!type)
             btnCancel.setVisibility(View.GONE);
     }
     private void clickView(){
